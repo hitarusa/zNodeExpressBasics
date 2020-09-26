@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;UTF-8">
+        <title>Express Basics</title>
+        <link rel="stylesheet" href="./style.css">
+    </head>
+    <body>
+        <table>
+            <tr>
+                <td id='headers'>Counter</td>
+                <td></td><td></td>
+            </tr>
+            <tr>
+                <td>Counter</td>
+                <td> : </td>
+                <td><%= counter %></td>
+            </tr>
+            <tr><td> </td><td> </td><td> </td></tr>
+            <tr><td> </td><td> </td><td> </td></tr>
+            <tr>
+                <td id='headers'>HTTP Headers</td>
+                <td></td><td></td>
+            </tr>
+            <% Object.keys(headersObj).forEach(function(k){ %>
+            <tr>
+                <td><%= k %></td>
+                <td> : </td>
+                <td><%= headersObj[k] %></td>
+            </tr>
+            <% }) %>
+            <tr><td> </td><td> </td><td> </td></tr>
+            <tr><td> </td><td> </td><td> </td></tr>
+            <tr>
+                <td id='headers'><%= mtd %> Parameters</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <% if (Object.keys(parametersObj).length > 0) { %>
+                <% Object.keys(parametersObj).forEach(function(k){ %>
+                <tr>
+                    <td><%= k %></td>
+                    <td> : </td>
+                    <td><%= parametersObj[k] %></td>
+                </tr>
+                <% }) %>
+            <% } else { %>
+                <tr>
+                    <td>No query parameter.</td><td> </td><td> </td>
+                </tr>
+            <% }%>
+            <tr><td> </td><td> </td><td> </td></tr>
+            <tr><td> </td><td> </td><td> </td></tr>
+            <form action="/echo" method="get">
+                <tr>
+                    <td id='headers'>Get Request</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Parameter1</td>
+                    <td> : </td>
+                    <td><input type="text" name="Parameter1"></td>
+                </tr>
+                <tr>
+                    <td>Parameter2</td>
+                    <td> : </td>
+                    <td><input type="text" name="Parameter2"></td>
+                </tr>
+                <tr>
+                    <td></td><td></td><td><input type="submit" value="GET"></td>
+                </tr>
+            </form>
+            <tr><td> </td><td> </td><td> </td></tr>
+            <tr><td> </td><td> </td><td> </td></tr>
+            <form action="/echo" method="post">
+                <tr>
+                    <td id='headers'>Post Request</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Parameter1</td>
+                    <td> : </td>
+                    <td><input type="text" name="Parameter1"></td>
+                </tr>
+                <tr>
+                    <td>Parameter2</td>
+                    <td> : </td>
+                    <td><input type="text" name="Parameter2"></td>
+                </tr>
+                <tr>
+                    <td></td><td></td><td><input type="submit" value="POST"></td>
+                </tr>
+            </form>
+        </table>
+    </body>
+
+</html>
