@@ -16,27 +16,31 @@ var session_cfg = {
 }
 app.use(session(session_cfg));  //セッションに必要。
 
-var cntr = 0;
-
 app.get('/', (req, res) => {
 //    res.send("Hello"); // Templateを使わない場合にはこれでレスポンス可能。
+    var cntr = 0;
     var hdrObj = req.headers;
     var parmObj = req.query;
-    updateSession(req.session.counter);
+    cntr = updateSession(cntr, req.session.counter);
+    req.session.counter = cntr;
     res.render('index.ejs', {counter : cntr, headersObj : hdrObj, mtd : 'GET', parametersObj : parmObj});
 });
 
 app.get('/echo', (req, res) => {
+    var cntr = 0;
     var hdrObj = req.headers;
     var parmObj = req.query;
-    updateSession(req.session.counter);
+    cntr = updateSession(cntr, req.session.counter);
+    req.session.counter = cntr;
     res.render('index.ejs', {counter : cntr, headersObj : hdrObj, mtd : 'GET', parametersObj : parmObj});
 });
 
 app.post('/echo', (req, res) => {
+    var cntr = 0;
     var hdrObj = req.headers;
     var parmObj = req.body;
-    updateSession(req.session.counter);
+    cntr = updateSession(cntr, req.session.counter);
+    req.session.counter = cntr;
     res.render('index.ejs', {counter : cntr, headersObj : hdrObj, mtd : 'POST', parametersObj : parmObj});
 });
 
@@ -44,10 +48,11 @@ app.listen(3000, () => {
     console.log('Start server port : 3000');
 })
 
-function updateSession(ssnCntr){    //Session Counterのアップデート関数
+function updateSession(cntr, ssnCntr){    //Session Counterのアップデート関数
     if (ssnCntr != undefined){
         cntr = ssnCntr; 
-      }
-      ssnCntr = ++cntr;
-    return;
+    }
+
+    ssnCntr = ++cntr;
+    return cntr;
 }
