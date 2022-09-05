@@ -44,14 +44,9 @@ app.post('/echo', (req, res) => {
     res.render('index.ejs', {counter : cntr, headersObj : hdrObj, mtd : 'POST', parametersObj : parmObj});
 });
 
-app.listen(80, () => {
-    console.log('Start server port : 80');
-})
-/*
 app.listen(3000, () => {
     console.log('Start server port : 3000');
 })
-*/
 
 function updateSession(cntr, ssnCntr){    //Session Counterのアップデート関数
     if (ssnCntr != undefined){
