@@ -45,3 +45,11 @@ App Serviceへの導入(ZIP)：
 		Nama : PORT
 		Value : <ポート番号>
 		[参考]https://docs.microsoft.com/ja-jp/azure/app-service/configure-language-nodejs?pivots=platform-linux#get-port-number
+
+JMeterテスト構成ファイル
+	nodeExpressBasics.jmxを適宜編集の上で使用する。特に・・・
+        <stringProp name="HTTPSampler.domain">hitarusa-webapplinux-nodeexpressbasics.azurewebsites.net</stringProp>
+        <stringProp name="HTTPSampler.port"></stringProp>
+        <stringProp name="HTTPSampler.protocol">https</stringProp>
+        <stringProp name="HTTPSampler.path"></stringProp>
+        <stringProp name="HTTPSampler.method">GET</stringProp>
