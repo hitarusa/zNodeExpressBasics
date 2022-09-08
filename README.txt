@@ -33,3 +33,15 @@ URI：
 		(localhost:3000/echo)
 	POST)
 		(localhost:3000/echo)
+
+App Serviceへの導入(ZIP)：
+	0.Aure上でApp Serviceをデプロイ。
+	0.bash(WSL)にzipを導入。
+	1.Applicationのルートディレクトリーで次のコマンドを実行。
+		zip -r nodeExpressBasic.zip .
+	2.次のコマンドを実行。
+		az webapp deploy --resource-group <リソース・グループ名> --name <App Service名> --src-path ./nodeExpressBasic.zip
+	999.(番外) App Service > Settings > Configuration > Application Settingsで次のようにポート番号を指定できるが、当該ポートでリクエスト送信しても失敗する。Log Streamを見る限りListenしているようには見える・・・
+		Nama : PORT
+		Value : <ポート番号>
+		[参考]https://docs.microsoft.com/ja-jp/azure/app-service/configure-language-nodejs?pivots=platform-linux#get-port-number

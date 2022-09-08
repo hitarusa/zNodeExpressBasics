@@ -1,3 +1,4 @@
+const port = process.env.PORT || 3000;
 var express = require('express');
 var ejs = require('ejs');           //EJSに必要。
 var bodyParser = require('body-parser'); //POSTのボディ(パラメータ)取得に必要。
@@ -44,8 +45,8 @@ app.post('/echo', (req, res) => {
     res.render('index.ejs', {counter : cntr, headersObj : hdrObj, mtd : 'POST', parametersObj : parmObj});
 });
 
-app.listen(3000, () => {
-    console.log('Start server port : 3000');
+app.listen(port, () => {
+    console.log('Start server port : ' + port);
 })
 
 function updateSession(cntr, ssnCntr){    //Session Counterのアップデート関数
