@@ -23,6 +23,7 @@ app.get('/', (req, res) => {
     var hdrObj = req.headers;
     var parmObj = req.query;
     cntr = updateSession(cntr, req.session.counter);
+    console.log('/ was invoked with counter value ' + cntr);
     req.session.counter = cntr;
     res.render('index.ejs', {counter : cntr, headersObj : hdrObj, mtd : 'GET', parametersObj : parmObj});
 });
@@ -32,6 +33,7 @@ app.get('/echo', (req, res) => {
     var hdrObj = req.headers;
     var parmObj = req.query;
     cntr = updateSession(cntr, req.session.counter);
+    console.log('GET /echo was invoked with counter value ' + cntr);
     req.session.counter = cntr;
     res.render('index.ejs', {counter : cntr, headersObj : hdrObj, mtd : 'GET', parametersObj : parmObj});
 });
@@ -41,6 +43,7 @@ app.post('/echo', (req, res) => {
     var hdrObj = req.headers;
     var parmObj = req.body;
     cntr = updateSession(cntr, req.session.counter);
+    console.log('POST /echo was invoked with counter value ' + cntr);
     req.session.counter = cntr;
     res.render('index.ejs', {counter : cntr, headersObj : hdrObj, mtd : 'POST', parametersObj : parmObj});
 });
