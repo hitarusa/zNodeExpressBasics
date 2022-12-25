@@ -24,15 +24,31 @@
 		index.ejs
 			ビューのテンプレート
 
-起動方法：
-	node index.js
+使用方法(ローカル環境)：
+	起動方法：
+		node index.js
 
-URI：
-	GET)
-		localhost:3000 
-		(localhost:3000/echo)
-	POST)
-		(localhost:3000/echo)
+	URI：
+		GET)
+			localhost:3000 
+			(localhost:3000/echo)
+		POST)
+			(localhost:3000/echo)
+
+使用方法(コンテナ)：
+	コンテナ・イメージ作成：
+		docker build -t ＜コンテナ・イメージ名＞:＜バージョン番号＞ .
+	コンテナ作成(初回)：
+		docker run -p <ブラウザーで指定するポート番号>:3000 ＜コンテナ・イメージ名＞:＜バージョン番号＞
+	コンテナ起動(2回目以降)：
+		docker start ＜コンテナID or コンテナ名＞
+
+	URI：
+		GET)
+			localhost:＜ポート番号＞ 
+			(localhost:＜ポート番号＞/echo)
+		POST)
+			(localhost:＜ポート番号＞/echo)
 
 App Serviceへの導入(ZIP)：
 	0.Aure上でApp Serviceをデプロイ。
